@@ -1,3 +1,4 @@
+//constants
 const deck = [
     1,2,3,4,5,6,7,8,9,10,10,10,10, //suite 1
     1,2,3,4,5,6,7,8,9,10,10,10,10, //suite 2
@@ -11,30 +12,20 @@ const namedeck = [
   "Ace of Spades", "2 of Spades", "3 of Spades", "4 of Spades", "5 of Spades", "6 of Spades", "7 of Spades", "8 of Spades", "9 of Spades", "10 of Spades", "Jack of Spades", "Queen of Spades", "King of Spades"
 ];
 
-//variables
-let playertotal = 0;
-let aitotal = 0;
-let carddrawn = 0;
-let playerturn = true;
+//functions
 
-//funcs
+//psuedorandom generator
 function drawcard(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-
-console.log('Welcome to CMDline Blackjack v 1.0!')
-console.log('For now, a few things have not been implemented: Ace values, Splitting, 2 Player Mode')
-console.log('A Changelog will appear below, ticking off the things implemented :)')
-console.log('-mrmollusc')
-//console.log('Click Enter To Begin')
-while(true){
-    let deal = prompt('Hit? (Y/N)')
+//playerturn mechanics
+function player() {
+    while(true){
+    let deal = prompt('Hit? (Y/N)');
     if(deal==='Y' && playertotal<21){
         
-        let randcard = drawcard(1,52);
-        carddraw=deck[randcard];
+        let randcard = drawcard(0,51);
         console.log('You drew', namedeck[randcard], 'giving you', deck[randcard]);
         playertotal+=deck[randcard];
         console.log('Your total is:', playertotal);
@@ -54,7 +45,33 @@ while(true){
         console.log('Your total is:', playertotal);
         console.log("Dealer's Turn...");
         break;
-    }
-    
-    
+    }   
 }
+}
+
+//variables
+let aitotal = 0;
+let carddrawn = 0;
+let playerturn = true;
+
+//init
+console.log('Welcome to CMDline Blackjack v 1.1!')
+console.log('For now, a few things have not been implemented: Ace values, Splitting, 2 Player Mode')
+console.log('A Changelog will appear below, ticking off the things implemented :)')
+console.log('1.1: Added the 2 initial cards')
+console.log('-mrmollusc')
+console.log('Click to start')
+//starting hand
+let card_a = drawcard(0,51);
+let card_b = drawcard(0,51);
+let start = deck[card_a]+deck[card_b];
+let playertotal = deck[card_a]+deck[card_b];
+console.log('Your starting hand is', namedeck[card_a],'and',namedeck[card_b], 'totalling to', start);
+
+//activate
+window.addEventListener('click', () =>{
+   player();
+    
+})
+
+    
