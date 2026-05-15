@@ -65,6 +65,10 @@
             let randcard = drawcard(0,51);
             for(i = 0; i <21; i++){
                 await delay(1000);
+                if(playertotal>=21){
+                    return;
+                    break;
+                }
                 if(aitotal>21){
                     console.log('Bust!');
                     console.log('mrmollusc loses!');
@@ -121,7 +125,6 @@
             aitotal = deck[card_a2]+deck[card_b2];
             let randcard = drawcard(0,51);
             console.log('Your starting hand is', namedeck[card_a],'and',namedeck[card_b], 'totalling to', start);
-            console.log('You drew', namedeck[randcard], 'giving you', deck[randcard]);
             console.log('Your total is:', playertotal);
             game();
             
@@ -144,9 +147,10 @@
 
         //init
         console.log('Welcome to CMDline Blackjack v 1.1!');
-        console.log('For now, a few things have not been implemented: Ace values, Splitting, 2 Player Mode');
+        console.log('For now, a few things have not been implemented: Ace values, Splitting, 2 Player Mode, Math.random being really bad. ps will never fix :/');
         console.log('A Changelog will appear below, ticking off the things implemented :)');
         console.log('1.1: Added the 2 initial cards');
+        console.log('1.2: Infinitely replayable');
         console.log('-mrmollusc');
         console.log('Click to start');
         console.log('Your starting hand is', namedeck[card_a],'and',namedeck[card_b], 'totalling to', start);
