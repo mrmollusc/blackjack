@@ -1,5 +1,6 @@
 # Simple Blackjack Prototype
-Blackjack in js on console, html port coming soon/never. Play against a dealer in low stakes, casual blackjack, without spliting, doubling, etc.
+Blackjack in js on console, html port coming soon/never. Play against a dealer in low stakes, casual blackjack, without spliting, doubling, etc. 
+# NO AI SLOP
 
 Changelog 1.0: Added starting cards
 
