@@ -34,6 +34,7 @@
                     console.log('You drew', namedeck[randcard], 'giving you', deck[randcard]);
                     playertotal+=deck[randcard];
                     console.log('Your total is:', playertotal);
+                    console.log(' ');
 
                         if(playertotal>21){
                             console.log('Bust!');
@@ -65,11 +66,19 @@
             let randcard = drawcard(0,51);
             for(i = 0; i <21; i++){
                 await delay(1000);
-                if(playertotal>=21){
+                if(playertotal == 21){
+                    playerscore++;
                     return;
                     break;
                 }
-                if(aitotal>21){
+                else if(playertotal>21){
+                    botscore++;
+                    return;
+                    break;
+                }
+                else if(aitotal>21){
+                    playerscore++;
+                    console.log(' ');
                     console.log('Bust!');
                     console.log('mrmollusc loses!');
                     console.log('You win!');
@@ -78,6 +87,8 @@
                     
                 }
                 else if(aitotal == 21){
+                    console.log(' ');
+                    botscore++;
                     console.log('Blackjack!');
                     console.log('mrmollusc wins!');
                     console.log('You lose!');
@@ -86,6 +97,8 @@
                     
                 }
                 else if(aitotal>playertotal){
+                    console.log(' ');
+                    botscore++;
                     console.log('mrmollusc stands.')
                     console.log('mrmollusc wins!');
                     console.log('You lose!');
@@ -94,6 +107,7 @@
                     
                 }
                 else{
+                    console.log(' ');
                     console.log('mrmollusc drew', namedeck[randcard], 'giving them', deck[randcard]);
                     aitotal+=deck[randcard];
                     console.log("mrmollusc's total is:", aitotal);
@@ -113,6 +127,7 @@
             if(playerturn==false){
             await bot(); //bot is halted from running until player function BREAKS/RETURNS;
             }
+            await delay(1000);
             card_a = drawcard(0,51);
             card_b = drawcard(0,51);
             card_a2 = drawcard(0,51);
@@ -124,8 +139,10 @@
             playertotal = deck[card_a]+deck[card_b];
             aitotal = deck[card_a2]+deck[card_b2];
             let randcard = drawcard(0,51);
+
+            console.log('The current score is player:', playerscore,'to mrmollusc:', botscore);
             console.log('Your starting hand is', namedeck[card_a],'and',namedeck[card_b], 'totalling to', start);
-            console.log('Your total is:', playertotal);
+
             game();
             
             
@@ -144,15 +161,20 @@
 
         let playertotal = deck[card_a]+deck[card_b];
         let aitotal = deck[card_a2]+deck[card_b2];
+        let playerscore = 0;
+        let botscore = 0;
 
         //init
         console.log('Welcome to CMDline Blackjack v 1.1!');
-        console.log('For now, a few things have not been implemented: Ace values, Splitting, 2 Player Mode, Math.random being really bad. ps will never fix :/');
+        console.log('For now, a few things have not been implemented: Ace values, Splitting, 2 Player Mode, Math.random being really bad.');
         console.log('A Changelog will appear below, ticking off the things implemented :)');
+        console.log(' ');
         console.log('1.1: Added the 2 initial cards');
         console.log('1.2: Infinitely replayable');
+        console.log('1.3: Added scoring');
         console.log('-mrmollusc');
-        console.log('Click to start');
+        console.log(' ');
+        console.log('The current score is player:', playerscore,'to mrmollusc:', botscore);
         console.log('Your starting hand is', namedeck[card_a],'and',namedeck[card_b], 'totalling to', start);
 
         //activate
