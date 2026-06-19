@@ -12,6 +12,18 @@
         "Ace of Clubs", "2 of Clubs", "3 of Clubs", "4 of Clubs", "5 of Clubs", "6 of Clubs", "7 of Clubs", "8 of Clubs", "9 of Clubs", "10 of Clubs", "Jack of Clubs", "Queen of Clubs", "King of Clubs",
         "Ace of Spades", "2 of Spades", "3 of Spades", "4 of Spades", "5 of Spades", "6 of Spades", "7 of Spades", "8 of Spades", "9 of Spades", "10 of Spades", "Jack of Spades", "Queen of Spades", "King of Spades"
         ];
+        var gamedeck = [
+            1,2,3,4,5,6,7,8,9,10,10,10,10, //suite 1
+            1,2,3,4,5,6,7,8,9,10,10,10,10, //suite 2
+            1,2,3,4,5,6,7,8,9,10,10,10,10, //suite 3
+            1,2,3,4,5,6,7,8,9,10,10,10,10, //suite 4
+        ]
+        var gamenamedeck = [
+        "Ace of Hearts", "2 of Hearts", "3 of Hearts", "4 of Hearts", "5 of Hearts", "6 of Hearts", "7 of Hearts", "8 of Hearts", "9 of Hearts", "10 of Hearts", "Jack of Hearts", "Queen of Hearts", "King of Hearts",
+        "Ace of Diamonds", "2 of Diamonds", "3 of Diamonds", "4 of Diamonds", "5 of Diamonds", "6 of Diamonds", "7 of Diamonds", "8 of Diamonds", "9 of Diamonds", "10 of Diamonds", "Jack of Diamonds", "Queen of Diamonds", "King of Diamonds",
+        "Ace of Clubs", "2 of Clubs", "3 of Clubs", "4 of Clubs", "5 of Clubs", "6 of Clubs", "7 of Clubs", "8 of Clubs", "9 of Clubs", "10 of Clubs", "Jack of Clubs", "Queen of Clubs", "King of Clubs",
+        "Ace of Spades", "2 of Spades", "3 of Spades", "4 of Spades", "5 of Spades", "6 of Spades", "7 of Spades", "8 of Spades", "9 of Spades", "10 of Spades", "Jack of Spades", "Queen of Spades", "King of Spades"
+        ];
 
         //functions
         
@@ -31,8 +43,8 @@
             let deal = prompt('Hit? (Y/N)');
                 if(deal==='Y' && playertotal<21){
                     let randcard = drawcard(0,51);
-                    console.log('You drew', namedeck[randcard], 'giving you', deck[randcard]);
-                    playertotal+=deck[randcard];
+                    console.log('You drew', gamenamedeck[randcard], 'giving you', game[randcard]);
+                    playertotal+=gamedeck[randcard];
                     console.log('Your total is:', playertotal);
                     console.log(' ');
 
@@ -62,7 +74,7 @@
 
         //bot mechanics
         async function bot(){
-            console.log("mrmollusc's hand is", namedeck[card_a2],'and',namedeck[card_b2], 'totalling to', start2);
+            console.log("mrmollusc's hand is", gamenamedeck[card_a2],'and',gamenamedeck[card_b2], 'totalling to', start2);
             let randcard = drawcard(0,51);
             for(i = 0; i <21; i++){
                 await delay(1000);
@@ -108,8 +120,8 @@
                 }
                 else{
                     console.log(' ');
-                    console.log('mrmollusc drew', namedeck[randcard], 'giving them', deck[randcard]);
-                    aitotal+=deck[randcard];
+                    console.log('mrmollusc drew', gamenamedeck[randcard], 'giving them', gamedeck[randcard]);
+                    aitotal+=gamedeck[randcard];
                     console.log("mrmollusc's total is:", aitotal);
                 }
             }
@@ -133,15 +145,15 @@
             card_a2 = drawcard(0,51);
             card_b2 = drawcard(0,51);
 
-            start = deck[card_a]+deck[card_b];
-            start2 = deck[card_a2]+deck[card_b2];
+            start = gamedeck[card_a]+gamedeck[card_b];
+            start2 = gamedeck[card_a2]+gamedeck[card_b2];
 
-            playertotal = deck[card_a]+deck[card_b];
-            aitotal = deck[card_a2]+deck[card_b2];
+            playertotal = gamedeck[card_a]+gamedeck[card_b];
+            aitotal = gamedeck[card_a2]+gamedeck[card_b2];
             let randcard = drawcard(0,51);
 
             console.log('The current score is player:', playerscore,'to mrmollusc:', botscore);
-            console.log('Your starting hand is', namedeck[card_a],'and',namedeck[card_b], 'totalling to', start);
+            console.log('Your starting hand is', gamenamedeck[card_a],'and',gamenamedeck[card_b], 'totalling to', start);
 
             game();
             
@@ -156,11 +168,11 @@
         let card_a2 = drawcard(0,51);
         let card_b2 = drawcard(0,51);
 
-        let start = deck[card_a]+deck[card_b];
-        let start2 = deck[card_a2]+deck[card_b2];
+        let start = gamedeck[card_a]+gamedeck[card_b];
+        let start2 = gamedeck[card_a2]+gamedeck[card_b2];
 
-        let playertotal = deck[card_a]+deck[card_b];
-        let aitotal = deck[card_a2]+deck[card_b2];
+        let playertotal = gamedeck[card_a]+gamedeck[card_b];
+        let aitotal = gamedeck[card_a2]+gamedeck[card_b2];
         let playerscore = 0;
         let botscore = 0;
 
@@ -175,7 +187,7 @@
         console.log('-mrmollusc');
         console.log(' ');
         console.log('The current score is player:', playerscore,'to mrmollusc:', botscore);
-        console.log('Your starting hand is', namedeck[card_a],'and',namedeck[card_b], 'totalling to', start);
+        console.log('Your starting hand is', gamenamedeck[card_a],'and',gamenamedeck[card_b], 'totalling to', start);
 
         //activate
 game();
